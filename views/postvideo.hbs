@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="../css/css.css" />
+</head>
+<body>
+<h1>Website </h1>
+
+<main>
+  <h2>Post Video</h2>
+  <form id="post-image" class="input-form" action="/posts/create" method="POST" enctype="multipart/form-data">
+    <input class="input" type="text" name="title" id="title" placeholder="Title">
+    <br>
+    <input class="input" type="text" name="description" id="description" placeholder="Description">
+    <br>
+    <div class="upload">
+    <button class="button">Video Upload</button>
+    <input type="file" name="uploadVideo" id="video" placeholder="video" accept="video/mp4" >
+    </div>
+    <br>
+
+      <label class="button" for="policy"> Accept Use Policy for Uploading Videos</label>
+
+    <input class="check" type="checkbox" id="policy">
+    <br>
+    <input class="button" type="submit" value="Post">
+
+
+
+  </form>
+</main>
+
+</body>
+</html>

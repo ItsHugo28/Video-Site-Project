@@ -1,0 +1,27 @@
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+</head>
+<main id="main-content">
+{{#each posts}}
+    {{>card this}}
+{{/each}}
+<br>
+{{# each recentPost}}
+    <div class="product-card">
+        <a href="/posts/{{id}}"><img src="/{{thumbnail}}">
+
+            <div class="product-info">
+                <p class="product-title">{{title}}</p>
+                <details>
+                    <summary style="font-size: 10px;">Post Details</summary>
+                    <h1>{{description}}</h1>
+                </details>
+            </div>
+    </div>
+
+{{/each}}
+
+
+</main>
+
