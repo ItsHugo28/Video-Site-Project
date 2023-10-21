@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+</head>
+<body>
+<h1>Website </h1>
+
+<main>
+<video controls>
+    <source src="/{{currentPost.video}}" type="video/mp4" />
+</video>
+
+{{log this}}
+
+  <h2>Title: {{currentPost.title}}</h2>
+ <h2>User: {{currentPost.username}}</h2>
+
+      <h2>{{formatDateString currentPost.createdAt}}</h2>
+      <h2>Description: {{currentPost.description}}</h2>
+  <video> <source src=""></video>
+  <h3> Comment Section </h3>
+    <textarea id="comment-text" class="comment-bot-text">
+    </textarea>
+    <i
+            id="comment-button"
+            class="fa fa-comment comment-box-button"
+            aria-hidden="true"
+            data-postid="{{currentPost.id}}"
+            ></i>
+<br>
+    <div id="comments" class="comments">
+      {{#each currentPost.comments}}
+          <strong class="comment-author">{{this.username}}</strong>
+          <span class="comment-date">{{formatDateString this.createdAt}}</span>
+          <div class="comment-text">{{this.text}}</div>
+
+      {{/each}}
+    </div>
+    <script>
+        document.getElementById('comment-button').addEventListener('click', function (ev){
+            let commentText = document.getElementById("comment-text").value;
+            if(!commentText) return;
+            var postId = ev.currentTarget.dataset.postid;
+
+            fetch("/comments/create", {
+                method: "POST",
+                headers: {
+                   'Content-Type' :"application/json"
+                },
+            body: JSON.stringify(
+                    {
+                        postId: postId,
+                        comment: commentText
+                    }
+            )
+            })
+                    .then(response => {
+                        console.log(response)
+                        return response.json()
+                    })
+                    .then(data => {
+                        console.log(data);
+                        var comments = document.getElementById('comments');
+                        let commentFragment = document.createElement('template');
+                        commentFragment.innerHTML= `<div id='comments'> <strong class="comment-author">${data.username}</strong>
+          <span class="comment-date">${(new Date()).toLocaleString("en-us", {
+              dateStyle:"long", timeStyle:"medium"})}
+                        })}</span>
+          <div class="comment-text">${data.commentText}</div> </div>`;
+                        comments.append(commentFragment.content.firstChild)
+                    })
+                    .catch(err => console.log(err));
+        })
+
+    </script>
+</main>
+</body>
+</html>

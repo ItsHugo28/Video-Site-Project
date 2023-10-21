@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <script defer src="../js/jsfile.js"></script>
+
+</head>
+<body>
+<h1>Website </h1>
+
+<main>
+  <h2>Registration Form</h2>
+
+
+  <form id="register"
+        action="/users/registration"
+  method="POST"
+  enctype="application/x-www-form-urlencoded">
+    <input class="input" type="text" name="username" id="username" placeholder="Username">
+      <input class="input" type="email" name="email" id="email" placeholder="Email">
+    <input class="input" type="password" name="password" id="password" placeholder="Password">
+<br>
+    <input class="input" type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+    <br>
+      <br>
+      <br>
+    <label class="button" for="check">13+?</label>
+    <input class= "check" type="checkbox" id="check" name="ageCheck" required>
+    <label class="button" for="tos">Accept TOS and Privacy Rules</label>
+    <input  class= "check"type="checkbox" id="tos" name="tosCheck" required>
+    <p><a href="">TOS and Privacy Rules</a></p>
+    <input class="button" type="submit" value="Register">
+  </form>
+</main>
+
+</body>
+</html>

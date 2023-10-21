@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+</head>
+<body>
+<h1>Website </h1>
+<main>
+ <div class="profile">
+  <h3>Profile</h3>
+
+  <h3> Username </h3>
+  <h3> User's Email </h3>
+ </div>
+  <div class="post">
+  <ul>
+    <li>Post 1</li>
+    <li>Post 2</li>
+    <li>Post 3</li>
+  </ul>
+  </div>
+
+    {{# each userPost}}
+        {{log this}}
+        <div class="product-card">
+            <div>
+
+            <a href="/posts/{{id}}"><img src="/{{thumbnail}}">
+               <br>
+                <form action="/posts/delete/{{id}}" method="GET">
+                    <input type="hidden" name="id">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+
+                <div class="product-info">
+                    <p class="product-title">{{title}}</p>
+                    <details>
+                        <summary style="font-size: 10px;">Post Details</summary>
+                        <h1>{{description}}</h1>
+                    </details>
+                </div>
+        </div>
+
+    {{/each}}
+</main>
+
+</body>
+</html>
